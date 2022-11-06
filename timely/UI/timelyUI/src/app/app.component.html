@@ -1,0 +1,80 @@
+<div class="container">
+  
+  <h1>Timely</h1>
+  <div class="buttonn">
+    <button class="botun"  (click)="addProject()" (click)="modalService.showModal=false" (click)="runningProject.start()" *ngIf="!runningProject.running">
+        Start
+    </button>
+    <button class="botun" (click)="modalService.showModal=true"  (click)="runningProject.stop()" *ngIf="runningProject.running">
+      Stop
+  </button>
+  </div> 
+
+  <button class="buttonexport " (click)="exportToExcel()">Export table</button>
+
+  <div id="menu">
+    <select (change)="tableSizeChange($event)">
+      <option *ngFor="let size of tableSizes">
+        {{size}}
+      </option>
+    </select>
+  </div>
+
+  <div class="project-table">
+    <table id="table">
+      <tr>
+        <th>Project</th>
+        <th>Start</th>
+        <th>Stop</th>
+        <th>Duration</th>
+        <th>Delete</th>
+      </tr>
+      <tr *ngFor="let project of projects | paginate:{
+        itemsPerPage:tableSize,
+        currentPage:page,
+        totalItems:count}; let i=index"
+      >
+        <td (click)="populateForm(project)" (click)="runningProject.stop()">{{project.name}}</td>
+        <td (click)="populateForm(project)" (click)="runningProject.stop()">{{project.startDate}}</td>
+        <td (click)="populateForm(project)" (click)="runningProject.stop()">{{project.endDate}}</td>
+        <td (click)="populateForm(project)" (click)="runningProject.stop()">{{project.total}}</td>
+        <td><a class="icon" (click)="deleteProject(project.id)"><fa-icon [icon]="faTrash"></fa-icon></a></td>
+      </tr>
+    </table>        
+  </div>
+  <div>
+    <pagination-controls
+    previousLabel="prev"
+    nextLabel="next"
+    (pageChange)="pagination($event)">
+  </pagination-controls>
+  </div>
+
+</div>
+
+<div *ngIf="modalService.showModal">
+  <div id="overlay"></div>
+  <div class="containernovi">
+    <div id="header">
+        <span>Stop Timer</span>        
+        <span class="header-right">
+            <a (click)="modalService.showModal=false">
+              <fa-icon [icon]="faClose"></fa-icon></a>
+        </span>
+    </div>
+    
+    <form #form="ngForm" >
+      <div class="form" >
+        <div class="form-group">
+          <label for="ProjectName">Project name *</label>
+          <input class="input" type="text" name="ProjectName" [(ngModel)]="project.name">
+        </div>        
+    <div class="button form-group">
+        <button (click)="updateProject(project)" (click)="runningProject.stop()" (click)="modalService.showModal=false">Update project</button>
+    </div>
+  </div>
+  </form>
+    <div class="deletebutton">
+      <button class="buttondelete" (click)="deleteProject(project.id)" (click)="runningProject.stop()" (click)="modalService.showModal=false">Delete</button>
+    </div>
+</div>

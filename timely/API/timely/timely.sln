@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32922.545
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "timely", "timely.csproj", "{DC5E63FC-6BAC-4846-8DB5-9F4CD4C17B3D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC5E63FC-6BAC-4846-8DB5-9F4CD4C17B3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC5E63FC-6BAC-4846-8DB5-9F4CD4C17B3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC5E63FC-6BAC-4846-8DB5-9F4CD4C17B3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC5E63FC-6BAC-4846-8DB5-9F4CD4C17B3D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6D4FE062-5B80-44EC-80F6-B318F7F329B8}
+	EndGlobalSection
+EndGlobal
